@@ -20,25 +20,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: eltelemaco/azureaks:${{ github.sha }}
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v4
-        with:
-          version: 'latest'
-      - name: Set up Kustomize      
-        run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 -d > $HOME/.kube/config
-          chmod 600 $HOME/.kube/config
-          ls -la $HOME/.kube/config
-          kubectl --kubeconfig $HOME/.kube/config
-          kubectl config view
-          kubectl get nodes
-      - name: Get Namespace
-        run: |
-          kubectl get namespace ${{ vars.NAMESPACE }} -o name || kubectl create namespace ${{ vars.NAMESPACE }}
-      
-  
+          tags: eltelemaco/azureaks:${{ github.sha }}   
+        
   create-namespace:
     name: create namespace
     runs-on: ubuntu-latest
@@ -49,7 +32,7 @@ jobs:
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
       with:        
-        args: get namespace ${{ vars.NAMESPACE }} -o name || create namespace ${{ vars.NAMESPACE }}
+        args: create namespace ${{ vars.NAMESPACE }}
         
 
   deploy-to-cluster:
