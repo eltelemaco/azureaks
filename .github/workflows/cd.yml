@@ -35,8 +35,7 @@ jobs:
       uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
-      with:
-        redirect-to: NAMESPACE_CREATE
+      with:        
         args: get namespace ${{ vars.NAMESPACE }} -o name --ignore-not-found || create namespace ${{ vars.NAMESPACE }}
         
 

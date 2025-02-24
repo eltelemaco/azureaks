@@ -1,0 +1,1 @@
+[![CI](https://github.com/eltelemaco/azureaks/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/eltelemaco/azureaks/actions/workflows/ci.yml)
