@@ -25,18 +25,31 @@ jobs:
         with:
           push: true
           tags: eltelemaco/azureaks:${{ github.sha }}
+  
+  create-namespace:
+    needs: docker
+    name: create namespace
+    runs-on: ubuntu-latest
+    steps:
+    -
+      name: create namespace
+      uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
+      with:
+        args: get pods -n ${{ vars.NAMESPACE }} -o name --ignore-not-found || kubectl create namespace ${{ vars.NAMESPACE }} 
 
   deploy-to-cluster:
     name: deploy to cluster
     runs-on: ubuntu-latest
-    needs: docker
+    needs: create-namespace
     steps:
     -
       name: deploy to cluster
       uses: steebchen/kubectl@v2.0.0
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: -n prueba set image --record deployment/prueba-gha prueba-gha=eltelemaco/azureaks:${{ github.sha }}
+        command: -n ${{ vars.NAMESPACE }} set image --record deployment/prueba-gha prueba-gha=eltelemaco/azureaks:${{ github.sha }}
     -
       name: verify deployment
       uses: steebchen/kubectl@v2.0.0
@@ -45,4 +58,4 @@ jobs:
         KUBECTL_VERSION: "1.28"
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: -n prueba rollout status deployment/prueba-gha
+        command: -n ${{ vars.NAMESPACE }} rollout status deployment/prueba-gha
