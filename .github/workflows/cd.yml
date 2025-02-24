@@ -45,7 +45,7 @@ jobs:
       uses: steebchen/kubectl@v2.0.0
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: -n ${{ vars.NAMESPACE }} set image --record deployment/prueba-gha prueba-gha=eltelemaco/azureaks:${{ github.sha }}
+        command: -n ${{ vars.NAMESPACE }} set image --record deployment/${{ vars.NAMESPACE}}-deployment ${{ vars.NAMESPACE }}-deployment=eltelemaco/azureaks:${{ github.sha }}
     -
       name: verify deployment
       uses: steebchen/kubectl@v2.0.0

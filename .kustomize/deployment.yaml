@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-  name: prueba-gha
+  name: ${{ vars.NAMESPACE }}-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      name: prueba-gha
+      name: ${{ vars.NAMESPACE }}-deployment
   template:
     metadata:
       labels:
-        name: prueba-gha
+        name: ${{ vars.NAMESPACE }}-deployment
     spec:
       containers:
-      - name: prueba-gha
+      - name: ${{ vars.NAMESPACE }}-pod
         image: eltelemaco/azureaks
         ports:
         - containerPort: 80
