@@ -1,8 +1,8 @@
 on:
   push:
-    branches-ignore:
-    - master
-
+    branches:
+      - master
+      
 name: CI
 jobs:
   docker:
