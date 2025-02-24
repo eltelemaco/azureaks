@@ -45,9 +45,9 @@ jobs:
       name: deploy to cluster
       uses: steebchen/kubectl@v2.0.0
       with:
-        config: ${{ secrets.KUBE_CONFIG_DATA }}
+        config: ${{ secrets.KUBE_CONFIG_DATA }}        
         #command: -n ${{ vars.NAMESPACE }} set image --record deployment/${{ vars.NAMESPACE}}-deployment ${{ vars.NAMESPACE }}-deployment=eltelemaco/azureaks:${{ github.sha }}
-        command: -n ${{ vars.NAMESPACE }} set image deployment/${{ vars.NAMESPACE}}-deployment container=eltelemaco/azureaks:${{ github.sha }}
+        command: set image --record deployment/${{ vars.NAMESPACE}}-deployment container=eltelemaco/azureaks:${{ github.sha }}
         
     - name: verify deployment
       uses: steebchen/kubectl@v2.0.0
