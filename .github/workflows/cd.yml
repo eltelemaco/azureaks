@@ -55,4 +55,4 @@ jobs:
         KUBECTL_VERSION: "1.28"
       with:
         config: ${{ secrets.KUBE_CONFIG_DATA }}
-        command: -n ${{ vars.NAMESPACE }} rollout status deployment/prueba-gha
+        command: -n ${{ vars.NAMESPACE }} rollout status deployment/${{ vars.NAMESPACE}}-deployment
