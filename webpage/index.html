@@ -1,0 +1,696 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Data Engineering Roadmap</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19fee37c-008f-8055-84d1-c49c0096aa41" class="page mono"><header><img class="page-cover-image" src="blog-banner-benefits-of-data-engineering.webp" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">👨‍💻</span></div><h1 class="page-title"><strong>Data Engineering Roadmap</strong></h1><p class="page-description"></p></header><div class="page-body"><div id="19fee37c-008f-8157-850d-e048abe4a64f" class="column-list"><div id="19fee37c-008f-811f-af65-e23844a8e51d" style="width:50%" class="column"><figure id="19fee37c-008f-8105-b61a-c9c4a01fefbf" class="image" style="text-align:center"><a href="Microsoft_Azure_Logo.svg.png"><img style="width:384px" src="Microsoft_Azure_Logo.svg.png"/></a></figure></div><div id="19fee37c-008f-81f3-92af-ff693861ce34" style="width:50%" class="column"><figure id="19fee37c-008f-814f-8861-e912b33d1d4c" class="image" style="text-align:center"><a href="161b2581-f020-4bdc-b720-22f793beda6f.png"><img style="width:432px" src="161b2581-f020-4bdc-b720-22f793beda6f.png"/></a></figure><p id="19fee37c-008f-816a-ac34-c2dfac3b3bab" class="">
+</p></div></div><p id="19fee37c-008f-81c7-9819-c92a27dd7ed9" class="">
+</p><p id="19fee37c-008f-8162-8b6d-dd1f5552f51b" class="">This roadmap is designed to help you master <strong>Azure</strong> and <strong>Databricks</strong> for data engineering, providing a structured approach to learning and tracking your progress </p><hr id="19fee37c-008f-819f-8738-f2d3dadc3745"/><p id="19fee37c-008f-81bf-945e-c850cf68d59f" class="">
+</p><p id="19fee37c-008f-81bc-8cff-d84b8ef7b1b7" class=""><strong>1. Overview</strong></p><p id="19fee37c-008f-81a3-a5be-fc17ed825547" class="">This roadmap outlines a step-by-step guide to mastering <strong>Data Engineering</strong> with a focus on <strong>Azure</strong> and <strong>Databricks</strong>, covering fundamental skills, hands-on projects, and advanced concepts.</p><hr id="19fee37c-008f-81a6-9114-e327084becd8"/><p id="19fee37c-008f-817f-b305-c391544ac707" class="">
+</p><p id="19fee37c-008f-8165-bba9-c4c47542db66" class=""><strong>2. Phases &amp; Milestones</strong></p><p id="19fee37c-008f-8187-8927-d04858fb0b86" class=""><strong>Phase 0: Programming Fundamentals</strong><div class="indented"><p id="19fee37c-008f-81da-9061-ce4af2418f6d" class=""><strong>Objective</strong>: Master the core programming skills required for data engineering, including <strong>Python</strong>, <strong>SQL</strong>, and <strong>Spark</strong>.</p><p id="19fee37c-008f-8129-bc45-c53572b9fecb" class=""><strong>Milestones:</strong><div class="indented"><ul id="19fee37c-008f-8113-8439-e4c41326813e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Master <strong>Python</strong> for data manipulation and automation (<a href="https://www.coursera.org/specializations/python">Python for Everybody</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-813b-849d-e8e56695502e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Learn <strong>SQL</strong> for querying and manipulating large datasets (<a href="https://leetcode.com/problemset/all/?topicSlugs=database">LeetCode SQL Problems</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8151-9b0c-c04be1749891" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Understand <strong>Apache Spark</strong> basics, focusing on <strong>PySpark</strong> </span><div class="indented"></div></li></ul><ul id="19fee37c-008f-81c5-8ee0-e9eda7951aec" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Gain proficiency in <strong>Data Structures</strong>, <strong>Algorithms</strong>, and working with <strong>JSON</strong> and <strong>Parquet</strong> files.</span><div class="indented"></div></li></ul></div></p></div></p><p id="19fee37c-008f-8170-bb57-c376ad875084" class="">
+</p><p id="19fee37c-008f-8198-b3ce-f88214f22726" class=""><strong>Phase 1: Core Data Engineering Concepts</strong><div class="indented"><p id="19fee37c-008f-81f5-9eb9-ff0dd13fc15e" class=""><strong>Objective</strong>: Develop foundational knowledge of <strong>ETL processes</strong>, <strong>data modeling</strong>, and <strong>transformations</strong> in Azure.</p><p id="19fee37c-008f-8133-827b-cc77d9378bdd" class=""><strong>Milestones:</strong><div class="indented"><ul id="19fee37c-008f-8150-b2bf-c114636bed7e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Understand <strong>ETL</strong> pipeline concepts (<a href="https://github.com/andkret/Cookbook">Data Engineering Cookbook</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-811b-bffe-dad842971134" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Perform <strong>data transformations</strong> using Python and SQL in Databricks (<a href="https://docs.databricks.com/en/transform/index.html">Databricks Transformations Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8185-8fb3-e506dcf4f1df" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Learn <strong>Star</strong> and <strong>Snowflake</strong> schemas.</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-81d3-a1dc-ffde25714980" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implement data validation and quality checks with tools like <strong>Great Expectations.</strong></span><div class="indented"></div></li></ul><ul id="19fee37c-008f-818f-a97b-d3309ef511a0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Gain familiarity with <strong>Delta Lake</strong>.</span><div class="indented"></div></li></ul><p id="19fee37c-008f-81ec-823a-ce42f47b0286" class="">
+</p></div></p></div></p><p id="19fee37c-008f-8119-befc-f2e3f6f9ef55" class=""><strong>Phase 2: Azure Data Services</strong><div class="indented"><p id="19fee37c-008f-81b4-bd69-c9082a57d3cc" class=""><strong>Objective</strong>: Deepen your knowledge of Azure’s data services.</p><p id="19fee37c-008f-8109-b231-fee2e09c5e2f" class=""><strong>Milestones:</strong><div class="indented"><ul id="19fee37c-008f-81c2-a0a1-cccbc369f14a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Learn <strong>Azure Blob Storage</strong> (<a href="https://learn.microsoft.com/en-us/azure/storage/blobs/">Blob Storage Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-81ca-b1cb-fe3cd297feb9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Explore <strong>Azure Data Lake</strong> (<a href="https://learn.microsoft.com/en-us/azure/data-lake-store/">Data Lake Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-816a-aeb4-f5e728ff009b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Set up <strong>Azure SQL Database</strong> (<a href="https://learn.microsoft.com/en-us/azure/azure-sql/">SQL Database Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-816d-99d6-e57a03ca682a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Orchestrate ETL pipelines using <strong>Azure Data Factory</strong> (<a href="https://learn.microsoft.com/en-us/azure/data-factory/">Data Factory Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8164-adba-ee82040d4527" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Explore <strong>Azure Synapse Analytics</strong> (<a href="https://learn.microsoft.com/en-us/azure/synapse-analytics/">Synapse Documentation</a>).</span><div class="indented"></div></li></ul><p id="19fee37c-008f-81c4-80f2-cb447783c6bc" class="">
+</p></div></p></div></p><p id="19fee37c-008f-8151-9869-d947e9bd506d" class=""><strong>Phase 3: Advanced Databricks &amp; Spark</strong><div class="indented"><p id="19fee37c-008f-81b8-b5c3-fd44ccb02ae6" class=""><strong>Objective</strong>: Master <strong>Apache Spark</strong> within <strong>Azure Databricks</strong>.</p><p id="19fee37c-008f-81b9-942f-eb1473ca048d" class=""><strong>Milestones:</strong><div class="indented"><ul id="19fee37c-008f-8141-949b-fbeb6ea82f3d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Advanced <strong>Spark DataFrames</strong> and <strong>PySpark</strong> transformations (<a href="https://spark.apache.org/docs/latest/sql-programming-guide.html">Spark SQL Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8156-b661-ddb69e38662c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implement <strong>Spark SQL</strong> for distributed querying.</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8102-9ae5-e9e9808534a5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Understand <strong>Spark Streaming</strong> (<a href="https://spark.apache.org/docs/latest/streaming-programming-guide.html">Spark Streaming Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8103-894b-f32d3995eed2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Configure and use <strong>Delta Lake</strong> for time travel and audit trails.</span><div class="indented"></div></li></ul><p id="19fee37c-008f-81c8-8e2e-d0b694da19e8" class="">
+</p></div></p></div></p><p id="19fee37c-008f-817a-aa5b-edde249a2f02" class=""><strong>Phase 4: Building Data Pipelines</strong><div class="indented"><p id="19fee37c-008f-8196-a2d2-e67b57fbb35b" class=""><strong>Objective</strong>: Design scalable and efficient data pipelines.</p><p id="19fee37c-008f-8176-9211-fc6a8afe62e1" class=""><strong>Milestones:</strong><div class="indented"><ul id="19fee37c-008f-8103-a20f-f549bf72c2e6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Build ETL pipelines using <strong>Azure Data Factory</strong> and <strong>Databricks.</strong></span><div class="indented"></div></li></ul><ul id="19fee37c-008f-81ce-a40b-f3a03223ecf6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implement <strong>data partitioning</strong> and <strong>clustering</strong> for optimization.</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-81ac-a9d3-c5a14d6d46af" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Integrate <strong>Azure Event Hubs</strong> for streaming (<a href="https://learn.microsoft.com/en-us/azure/event-hubs/">Event Hubs Documentation</a>).</span><div class="indented"></div></li></ul><p id="19fee37c-008f-8126-bc50-ce47c26f3a4d" class="">
+</p></div></p></div></p><p id="19fee37c-008f-81b4-96dd-d0a9e6e527a0" class=""><strong>Phase 5: Data Governance &amp; Security</strong><div class="indented"><p id="19fee37c-008f-81ef-9a13-fee6bd0c68e5" class=""><strong>Objective</strong>: Implement best practices for <strong>data governance</strong> and <strong>security</strong>.</p><p id="19fee37c-008f-81a7-95d5-edf1c6a36198" class=""><strong>Milestones:</strong><div class="indented"><ul id="19fee37c-008f-81be-ac56-c5d339b6a467" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Use <strong>Azure Purview</strong> (<a href="https://learn.microsoft.com/en-us/azure/purview/">Purview Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-812d-beaa-d1dbe021ffd9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Set up <strong>Databricks Unity Catalog</strong> (<a href="https://docs.databricks.com/en/data-governance/index.html">Unity Catalog Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8103-92a7-f8743d60b4bb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Learn <strong>RBAC</strong> (<a href="https://learn.microsoft.com/en-us/azure/role-based-access-control/">Role-Based Access Control Documentation</a>).</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-81d6-aa71-d0b697a4366a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Monitor data quality with <strong>Great Expectations</strong>.</span><div class="indented"></div></li></ul><p id="19fee37c-008f-81cf-bd17-f4d196917d2b" class="">
+</p></div></p></div></p><p id="19fee37c-008f-81ac-bf50-dabf8560bf4c" class=""><strong>Phase 6: Advanced Topics</strong><div class="indented"><p id="19fee37c-008f-8144-a38a-d8fe87fd4999" class=""><strong>Objective</strong>: Gain expertise in <strong>real-time analytics</strong> and <strong>ML integration</strong>.</p><p id="19fee37c-008f-817d-bb72-e3ffa3c4d102" class=""><strong>Milestones:</strong><div class="indented"><ul id="19fee37c-008f-819a-aad2-da5c89be725b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Implement <strong>Delta Live Tables</strong>.</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8129-a6d8-ef910522d947" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Use <strong>AutoML</strong> in Databricks.</span><div class="indented"></div></li></ul><ul id="19fee37c-008f-8125-b43d-cbb22c1dc09d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Monitor workflows with <strong>Azure Monitor</strong> (<a href="https://learn.microsoft.com/en-us/azure/azure-monitor/">Azure Monitor Documentation</a>).</span><div class="indented"></div></li></ul><hr id="19fee37c-008f-81c2-b55f-df759acc7bef"/><p id="19fee37c-008f-8183-bffc-f30653d0174c" class="">
+</p></div></p></div></p><h3 id="19fee37c-008f-8197-bf49-fddf58fc431c" class=""><strong>3. Projects</strong></h3><table id="19fee37c-008f-812d-82ac-ce3fa194a2de" class="simple-table"><thead class="simple-table-header"><tr id="19fee37c-008f-81e4-a504-daa6ccfe6f0b"><th id="w:xY" class="simple-table-header-color simple-table-header"><strong>Project</strong></th><th id="Y`f^" class="simple-table-header-color simple-table-header"><strong>Description</strong></th><th id="DvjX" class="simple-table-header-color simple-table-header"><strong>Tools</strong></th><th id="~RpQ" class="simple-table-header-color simple-table-header"><strong>Status</strong></th></tr></thead><tbody><tr id="19fee37c-008f-810a-9431-fbe2d06ed615"><td id="w:xY" class=""><strong>Build a Data Lake</strong></td><td id="Y`f^" class="">Design a data lake with Azure Blob and Databricks</td><td id="DvjX" class="">Azure Blob, Databricks</td><td id="~RpQ" class="">Not Started</td></tr><tr id="19fee37c-008f-8156-9983-f7eb2dbe9fb6"><td id="w:xY" class=""><strong>ETL Pipeline</strong></td><td id="Y`f^" class="">Build an ETL pipeline using Azure Data Factory and Databricks</td><td id="DvjX" class="">ADF, Databricks</td><td id="~RpQ" class="">Not Started</td></tr><tr id="19fee37c-008f-8107-ab54-c73013c1670c"><td id="w:xY" class=""><strong>Real-time Data Processing</strong></td><td id="Y`f^" class="">Process live data using Event Hubs and Databricks Streaming</td><td id="DvjX" class="">Event Hubs, Databricks</td><td id="~RpQ" class="">Not Started</td></tr></tbody></table><hr id="19fee37c-008f-81fa-9e43-fb4df3a02083"/><p id="19fee37c-008f-8121-acaf-f0aa113f6604" class="">
+</p><h3 id="19fee37c-008f-81ab-a3af-e41d0c8e7a23" class=""><strong>4. Certifications Roadmap</strong></h3><table id="19fee37c-008f-81ed-9466-de4dc61968c1" class="simple-table"><thead class="simple-table-header"><tr id="19fee37c-008f-81ce-88d4-f6049f0dad12"><th id="`&lt;mO" class="simple-table-header-color simple-table-header"><strong>Certification</strong></th><th id="kOgq" class="simple-table-header-color simple-table-header"><strong>Description</strong></th><th id="dOD^" class="simple-table-header-color simple-table-header"><strong>Status</strong></th></tr></thead><tbody><tr id="19fee37c-008f-812e-8cd3-e978d9bb6b9f"><td id="`&lt;mO" class=""><strong>AZ-900: Microsoft Azure Fundamentals</strong></td><td id="kOgq" class="">Basic knowledge of cloud services and Azure platform</td><td id="dOD^" class="">Not Started</td></tr><tr id="19fee37c-008f-8148-97f6-fd5bc5945d45"><td id="`&lt;mO" class=""><strong>DP-203: Data Engineering on Azure</strong></td><td id="kOgq" class="">Mastery of data engineering solutions on Azure</td><td id="dOD^" class="">Not Started</td></tr><tr id="19fee37c-008f-8112-9f8b-fc7a562c9f23"><td id="`&lt;mO" class=""><strong>Databricks Certified Associate Developer for Apache Spark</strong></td><td id="kOgq" class="">Proficiency in Spark and Databricks</td><td id="dOD^" class="">Not Started</td></tr><tr id="19fee37c-008f-81b2-8cd7-c8bca802ae7d"><td id="`&lt;mO" class=""><strong>Databricks Data Engineer Associate</strong></td><td id="kOgq" class="">Proficiency in Databricks</td><td id="dOD^" class="">Not Started</td></tr></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
