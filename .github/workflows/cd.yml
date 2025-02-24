@@ -27,17 +27,18 @@ jobs:
           tags: eltelemaco/azureaks:${{ github.sha }}
   
   create-namespace:
-    needs: docker
     name: create namespace
     runs-on: ubuntu-latest
+    needs: docker    
     steps:
-    -
-      name: create namespace
+    - name: verify namespace
       uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: get pods -n ${{ vars.NAMESPACE }} -o name --ignore-not-found || kubectl create namespace ${{ vars.NAMESPACE }} 
+        redirect-to: NAMESPACE_CREATE
+        args: get namespace ${{ vars.NAMESPACE }} -o name --ignore-not-found || create namespace ${{ vars.NAMESPACE }}
+        
 
   deploy-to-cluster:
     name: deploy to cluster
