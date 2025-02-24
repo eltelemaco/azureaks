@@ -25,12 +25,13 @@ jobs:
         uses: azure/setup-kubectl@v4
         with:
           version: 'latest'
-      - name: Set up Kustomize
+      - name: Set up Kustomize      
         run: |
           mkdir -p $HOME/.kube
           echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 -d > $HOME/.kube/config
           chmod 600 $HOME/.kube/config
           ls -la $HOME/.kube/config
+          kubectl --kubeconfig $HOME/.kube/config
           kubectl config view
           kubectl get nodes
       - name: Get Namespace
