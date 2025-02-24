@@ -36,7 +36,7 @@ jobs:
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
       with:        
-        args: get namespace ${{ vars.NAMESPACE }} -o name --ignore-not-found || create namespace ${{ vars.NAMESPACE }}
+        args: get namespace ${{ vars.NAMESPACE }} -o name --ignore-not-found | grep -q ${{ vars.NAMESPACE }} " || create namespace ${{ vars.NAMESPACE }}
         
 
   deploy-to-cluster:
